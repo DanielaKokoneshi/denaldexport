@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #1a1b1f;
+  --color-ink-muted: #32343a;
+  --color-brand: #194620;
+  --color-brand-hover: #32343a;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f4f4;
+  --color-hero-text: #f5f6fb;
+
+  --text-jumbo: clamp(2.5rem, 5vw, 4rem);
+  --text-jumbo--line-height: 1.15;
+  --text-display: clamp(1.75rem, 3vw, 2.25rem);
+  --text-display--line-height: 1.35;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 bg-surface font-sans text-base font-normal leading-7 text-ink antialiased;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  a {
+    @apply text-ink no-underline transition-opacity duration-200;
+  }
+}
