@@ -2,8 +2,6 @@
 
 Independent React rewrite of the Denald Export site with **local Tailwind styles**  
 
-The original conversion lives in `../react-app` and is left untouched.
-
 ## Scripts
 
 ```bash
