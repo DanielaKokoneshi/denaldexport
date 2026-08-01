@@ -1,6 +1,6 @@
 # Denald Export (v2)
 
-Independent React rewrite of the Denald Export site with **local Tailwind styles** — no Webflow CSS/CDN dependency.
+Independent React rewrite of the Denald Export site with **local Tailwind styles**  
 
 The original conversion lives in `../react-app` and is left untouched.
 
