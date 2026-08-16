@@ -11,9 +11,9 @@ const productLinks = [
 
 function navLinkClass({ isActive }: { isActive: boolean }) {
   return [
-    'block px-4 py-3 text-sm font-medium uppercase tracking-wide text-[#777777]  transition-colors lg:inline-block lg:px-15',
+    'block px-3 py-3 text-xs sm:text-sm font-medium uppercase tracking-wide text-[#777777] transition-colors lg:inline-block lg:px-15',
     isActive
-      ? 'text-brand border-1 border-brand font-semibold '
+      ? 'text-brand lg:border-1 lg:border-brand  font-semibold'
       : 'hover:text-brand',
   ].join(' ')
 }
@@ -40,9 +40,9 @@ export function Navbar() {
 
   return (
     <header className="relative z-50 border-b border-black/5 bg-white">
-      <div className="mx-auto flex px-[50px] items-center justify-between gap-4 px-5 py-5 lg:px-8">
+      <div className="mx-auto flex items-center justify-between gap-3 px-4 py-4 sm:px-5 sm:py-5 lg:px-8">
         <Link to="/" aria-label="Denald Export home" className="shrink-0">
-          <img src={ASSETS.logo} width={120} alt="Denald Export" className="h-auto w-[120px]" />
+          <img src={ASSETS.logo} width={120} alt="Denald Export" className="h-auto w-[90px] sm:w-[120px]" />
         </Link>
 
         <div className="flex items-center gap-3 lg:gap-6">
@@ -77,7 +77,7 @@ export function Navbar() {
               </button>
               <div
                 className={[
-                  'bg-white lg:absolute lg:left-0 lg:top-full lg:min-w-[245px] lg:border lg:border-black/5 lg:shadow-md  items-start  lg:py-2 lg:transition-all lg:duration-300 lg:ease-in-out',
+                  'bg-white lg:absolute lg:left-0 lg:top-full lg:min-w-[245px] lg:border lg:border-black/5 lg:shadow-md lg:py-2 lg:transition-all lg:duration-300 lg:ease-in-out',
                   dropdownOpen ? 'block' : 'hidden',
                 ].join(' ')}
               >
@@ -85,7 +85,7 @@ export function Navbar() {
                   <Link
                     key={item.to}
                     to={item.to}
-                    className="block px-4 py-3 text-center text-sm text-ink hover:bg-surface-muted hover:text-brand "
+                    className="block px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm text-ink hover:bg-surface-muted hover:text-brand"
                   >
                     {item.label}
                   </Link>
