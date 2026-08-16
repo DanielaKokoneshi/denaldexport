@@ -66,10 +66,7 @@ export function Navbar() {
             >
               <button
                 type="button"
-                className={[
-                  'flex w-full items-center justify-center px-4 py-3 text-sm font-medium uppercase tracking-wide transition-colors lg:inline-flex lg:px-5',
-                  productsActive ? 'text-brand' : 'text-ink hover:text-brand',
-                ].join(' ')}
+                className={navLinkClass({ isActive: productsActive })}
                 aria-expanded={dropdownOpen}
                 aria-haspopup="true"
                 onClick={() => setDropdownOpen((open) => !open)}
@@ -86,7 +83,7 @@ export function Navbar() {
                   <Link
                     key={item.to}
                     to={item.to}
-                    className="block px-5 py-3 text-center text-sm text-ink hover:bg-surface-muted hover:text-brand lg:text-left"
+                    className="block px-4 py-3 text-left text-sm text-ink hover:bg-surface-muted hover:text-brand lg:text-left"
                   >
                     {item.label}
                   </Link>
