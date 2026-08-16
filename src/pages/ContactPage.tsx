@@ -13,7 +13,7 @@ export function ContactPage() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     if (!email.trim()) {
@@ -21,17 +21,27 @@ export function ContactPage() {
       return
     }
 
-    const subject = encodeURIComponent(`Contact from ${name.trim() || 'website visitor'}`)
-    const body = encodeURIComponent(
-      [`Name: ${name.trim() || '—'}`, `Email: ${email.trim()}`, '', message.trim()].join('\n'),
-    )
-
     try {
-      window.location.href = `mailto:denaldexport@gmail.com?subject=${subject}&body=${body}`
-      setStatus('success')
-      setName('')
-      setEmail('')
-      setMessage('')
+      const response = await fetch('https://formspree.io/f/mrpzavwe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name.trim() || '—',
+          email: email.trim(),
+          message: message.trim(),
+        }),
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        setName('')
+        setEmail('')
+        setMessage('')
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }
