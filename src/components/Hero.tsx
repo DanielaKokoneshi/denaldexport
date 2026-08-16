@@ -18,7 +18,7 @@ export function Hero({
   return (
     <section
       className={[
-        'relative mb-16 flex items-center justify-center bg-cover bg-center bg-no-repeat text-white',
+        'relative mb-16 flex items-center justify-center bg-fixed bg-cover bg-center  text-white',
         height === 'home' ? 'h-[620px]' : 'h-[480px]',
       ].join(' ')}
       style={{
@@ -26,7 +26,7 @@ export function Hero({
       }}
     >
       <div className="w-[70%] max-w-[1140px] px-4 text-center">
-        <h1 className="mb-4 text-jumbo font-normal tracking-tight text-white">{title}</h1>
+        <h1 className="mb-4 text-jumbo font-semibold tracking-tight text-white">{title}</h1>
         {children}
       </div>
     </section>

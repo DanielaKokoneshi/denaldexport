@@ -32,9 +32,12 @@ export function AllProductsPage() {
   return (
     <>
       <Hero
+      
         title="All Products"
         image={ASSETS.backgrounds.products}
         overlay="rgba(0,0,0,0.2)"
+     
+        
       />
 
       <section className="mx-auto max-w-[1140px] px-5 pb-20 md:px-8">

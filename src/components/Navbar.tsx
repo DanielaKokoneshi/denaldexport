@@ -11,8 +11,10 @@ const productLinks = [
 
 function navLinkClass({ isActive }: { isActive: boolean }) {
   return [
-    'block px-4 py-3 text-sm font-medium uppercase tracking-wide text-ink transition-colors lg:inline-block lg:px-5',
-    isActive ? 'text-brand' : 'hover:text-brand',
+    'block px-4 py-3 text-sm font-medium uppercase tracking-wide text-[#777777]  transition-colors lg:inline-block lg:px-15',
+    isActive
+      ? 'text-brand border-1 border-brand font-semibold '
+      : 'hover:text-brand',
   ].join(' ')
 }
 
@@ -75,7 +77,7 @@ export function Navbar() {
               </button>
               <div
                 className={[
-                  'bg-white lg:absolute lg:left-0 lg:top-full lg:min-w-[180px] lg:border lg:border-black/5 lg:shadow-md',
+                  'bg-white lg:absolute lg:left-0 lg:top-full lg:min-w-[245px] lg:border lg:border-black/5 lg:shadow-md  items-start  lg:py-2 lg:transition-all lg:duration-300 lg:ease-in-out',
                   dropdownOpen ? 'block' : 'hidden',
                 ].join(' ')}
               >
@@ -83,7 +85,7 @@ export function Navbar() {
                   <Link
                     key={item.to}
                     to={item.to}
-                    className="block px-4 py-3 text-left text-sm text-ink hover:bg-surface-muted hover:text-brand lg:text-left"
+                    className="block px-4 py-3 text-center text-sm text-ink hover:bg-surface-muted hover:text-brand "
                   >
                     {item.label}
                   </Link>

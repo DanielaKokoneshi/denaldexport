@@ -8,7 +8,7 @@ export function AboutPage() {
       <Hero title="About Us" image={ASSETS.backgrounds.about} />
 
       <div className="mx-auto max-w-[1140px] px-5 pb-8 md:px-8">
-        <p className="mx-auto mb-10 max-w-4xl text-center text-display font-normal">
+        <p className="mx-auto mb-10 max-w-4xl text-center text-[20px] font-normal leading-loose">
           We are a dedicated team of agricultural professionals committed to delivering high-quality
           fresh produce to markets around the world. From carefully cultivated fields to modern
           packing facilities, every step of our process is focused on quality, safety, and
@@ -17,8 +17,8 @@ export function AboutPage() {
 
         <div className="mb-12 h-px w-full bg-black/10" />
 
-        <div className="mb-12 grid items-center gap-8 md:grid-cols-2 md:gap-16">
-          <p className="text-ink/70">
+        <div className="mb-12 grid items-center gap-8 md:grid-cols-2 md:gap-16 ">
+          <p className=" text-justify text-ink/70 leading-loose">
             Based in a region known for its fertile land and ideal growing conditions, we work
             closely with experienced farmers to ensure consistent standards and sustainable
             production.
@@ -48,7 +48,7 @@ export function AboutPage() {
             loading="lazy"
             className="mx-auto w-full max-w-[448px] md:order-1"
           />
-          <p className="text-ink/70 md:order-2">
+          <p className="text-ink/70 md:order-2 text-justify leading-loose">
             With strong logistics coordination and attention to detail, we supply importers,
             distributors, and retailers with dependable shipments and competitive solutions.
             <br />
@@ -74,7 +74,7 @@ export function AboutPage() {
               <div key={service.id} className="text-left">
                 <img src={service.icon} width={70} alt="" className="mb-4" />
                 <h3 className="mb-2 text-xl font-normal">{service.title}</h3>
-                <p className="text-ink/70">{service.description}</p>
+                <p className="text-justify text-ink/70">{service.description}</p>
               </div>
             ))}
           </div>
