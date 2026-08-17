@@ -15,7 +15,7 @@ export function HomePage() {
       </Hero>
 
       <div className="mx-auto max-w-[1140px] px-5 md:px-8">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+        <div className="mx-auto mb-10 max-w-3xl text-center" data-aos="fade-up">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-ink/60">
             What we believe in
           </p>
@@ -25,7 +25,7 @@ export function HomePage() {
         <div className="mb-16 h-px w-full bg-black/10" />
 
         <div className="mb-20 grid items-center gap-10 md:grid-cols-2 md:gap-16">
-          <div>
+          <div data-aos="fade-right">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-ink/60">About</p>
             <h2 className="mb-4 text-4xl font-normal leading-tight">Who we are</h2>
             <p className="mb-8 text-ink/70">
@@ -42,11 +42,12 @@ export function HomePage() {
             sizes="(max-width: 479px) 100vw, (max-width: 991px) 49vw, 50vw"
             alt="Fresh produce from Denald Export"
             className="w-full object-cover"
+            data-aos="fade-left"
           />
         </div>
       </div>
 
-      <section className="mx-4 mb-16 bg-surface-muted px-4 py-16 md:mx-8 md:px-8">
+      <section className="mx-4 mb-16 bg-surface-muted px-4 py-16 md:mx-8 md:px-8" data-aos="fade-up">
         <div className="mx-auto max-w-[1140px] text-center">
           <h2 className="mb-10 text-display font-normal">Our Most Featured Products</h2>
           <div
@@ -54,7 +55,9 @@ export function HomePage() {
             className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
           >
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} data-aos="zoom-in" data-aos-delay="100">
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
           <ButtonLink to="/products/allproducts" variant="jumbo">
@@ -68,8 +71,9 @@ export function HomePage() {
         style={{
           backgroundImage: `linear-gradient(rgba(1,1,1,0.2), rgba(1,1,1,0.2)), url(${ASSETS.backgrounds.cta})`,
         }}
+        data-aos="fade-up"
       >
-        <div className="mx-auto max-w-3xl text-center text-hero-text">
+        <div className="mx-auto max-w-3xl text-center text-hero-text" data-aos="fade-up">
           <h2 className="mb-4 text-display font-semibold">Our Products</h2>
           <p className="text-xl font-semibold">Fresh. Healthy. High-Quality.</p>
           <p className="mt-3 text-lg text-hero-text/90">

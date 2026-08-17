@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { Navigate, useSearchParams } from 'react-router-dom'
+import AOS from 'aos'
 import { ASSETS } from '../data/assets'
 import {
+  allProducts,
   allProductsTotalPages,
   getAllProductsPage,
 } from '../data/products'
@@ -16,7 +18,14 @@ export function AllProductsPage() {
   const page = Number.isFinite(parsed) && parsed >= 1 ? Math.floor(parsed) : NaN
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    AOS.refreshHard()
+    // Scroll to top only on mobile devices
+    const timer = setTimeout(() => {
+      if (window.innerWidth < 768) {
+        window.scrollTo(0, 0)
+      }
+    }, 300)
+    return () => clearTimeout(timer)
   }, [page])
 
   if (!Number.isFinite(page) || page < 1 || page > allProductsTotalPages) {
@@ -27,7 +36,9 @@ export function AllProductsPage() {
     return <Navigate to="/products/allproducts" replace />
   }
 
-  const products = getAllProductsPage(page)
+
+  // On mobile, show all products; on desktop, show paginated products
+  const products = window.innerWidth < 768 ? allProducts :  getAllProductsPage(page) 
 
   return (
     <>
@@ -41,7 +52,7 @@ export function AllProductsPage() {
       />
 
       <section className="mx-auto max-w-[1140px] px-5 pb-20 md:px-8">
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-center" data-aos="fade-up">
           <h2 className="mb-4 text-4xl font-normal">Our Products</h2>
           <p className="mx-auto max-w-3xl text-xs font-medium uppercase tracking-wide text-ink/60">
             Discover our full selection of premium fruits and vegetables, grown with care and
@@ -51,12 +62,17 @@ export function AllProductsPage() {
         </div>
 
         <div role="list" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product, index) => (
+            <div key={product.id} data-aos="zoom-in" data-aos-delay={`${index * 50}`}>
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
 
-        <ProductsPagination page={page} totalPages={allProductsTotalPages} />
+        {/* Only show pagination on desktop (md and up) */}
+        <div className="hidden md:block">
+          <ProductsPagination page={page} totalPages={allProductsTotalPages} />
+        </div>
       </section>
     </>
   )

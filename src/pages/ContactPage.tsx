@@ -53,7 +53,7 @@ export function ContactPage() {
 
       <section className="mx-auto max-w-[1140px] px-5 pb-20 md:px-8">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-          <div>
+          <div data-aos="fade-right">
             <h2 className="mb-8 text-3xl font-normal">Contact us</h2>
 
             {status !== 'success' && (
@@ -123,7 +123,7 @@ export function ContactPage() {
             )}
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-8" data-aos="fade-left">
             <div>
               <p className="mb-2 text-xs font-medium uppercase tracking-widest">Our Office</p>
               <a

@@ -1,4 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { Layout } from './components/Layout'
 import { AboutPage } from './pages/AboutPage'
 import { AllProductsPage } from './pages/AllProductsPage'
@@ -18,6 +21,14 @@ function LegacyAllProductsPageRedirect() {
 }
 
 export default function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      offset: 100,
+      once: true,
+    })
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
