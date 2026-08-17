@@ -2,9 +2,14 @@ import { useEffect } from 'react'
 import { Navigate, useSearchParams } from 'react-router-dom'
 import AOS from 'aos'
 import { ASSETS } from '../data/assets'
-import { allProducts } from '../data/products'
+import {
+  allProducts,
+  allProductsTotalPages,
+  getAllProductsPage,
+} from '../data/products'
 import { Hero } from '../components/Hero'
 import { ProductCard } from '../components/ProductCard'
+import { ProductsPagination } from '../components/ProductsPagination'
 
 export function AllProductsPage() {
   const [searchParams] = useSearchParams()
@@ -14,13 +19,18 @@ export function AllProductsPage() {
 
   useEffect(() => {
     AOS.refreshHard()
+    // Scroll to top only on mobile devices
     const timer = setTimeout(() => {
-      window.scrollTo(0, 0)
+      if (window.innerWidth < 768) {
+        window.scrollTo(0, 0)
+      }else {
+        window.scrollTo(0, 700)
+      }
     }, 300)
     return () => clearTimeout(timer)
   }, [page])
 
-  if (!Number.isFinite(page) || page < 1) {
+  if (!Number.isFinite(page) || page < 1 || page > allProductsTotalPages) {
     return <Navigate to="/products/allproducts" replace />
   }
 
@@ -28,7 +38,9 @@ export function AllProductsPage() {
     return <Navigate to="/products/allproducts" replace />
   }
 
-  const products = allProducts
+
+  // On mobile, show all products; on desktop, show paginated products
+  const products = window.innerWidth < 768 ? allProducts :  getAllProductsPage(page) 
 
   return (
     <>
@@ -51,12 +63,22 @@ export function AllProductsPage() {
           </p>
         </div>
 
-        <div role="list" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div role="list" className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, index) => (
-            <div key={product.id} data-aos="zoom-in" data-aos-delay={`${index * 50}`}>
+            <div
+              key={product.id}
+              data-aos="zoom-in"
+              data-aos-delay={`${index * 50}`}
+              className="rounded-[20px] border border-black/5 bg-white p-3 shadow-[0_12px_30px_rgba(15,23,42,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(15,23,42,0.08)]"
+            >
               <ProductCard product={product} />
             </div>
           ))}
+        </div>
+
+        {/* Only show pagination on desktop (md and up) */}
+        <div className="hidden md:block">
+          <ProductsPagination page={page} totalPages={allProductsTotalPages} />
         </div>
       </section>
     </>

@@ -42,9 +42,14 @@ export function CategoryProductsPage({
           </p>
         </div>
 
-        <div role="list" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div role="list" className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, index) => (
-            <div key={product.id} data-aos="zoom-in" data-aos-delay={`${index * 50}`}>
+            <div
+              key={product.id}
+              data-aos="zoom-in"
+              data-aos-delay={`${index * 50}`}
+              className="rounded-[20px] border border-black/5 bg-white p-3 shadow-[0_12px_30px_rgba(15,23,42,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(15,23,42,0.08)]"
+            >
               <ProductCard product={product} />
             </div>
           ))}

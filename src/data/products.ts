@@ -130,13 +130,22 @@ export const allProducts: Product[] = [
   productImage('zucchini', 'Zucchini', 'vegetable', 'png', [500, 800, 1080], 1536),
 ]
 
-/** Homepage featured grid — first page of the catalog. */
-export const featuredProducts = allProducts.slice(0, 8)
-
 const byId = Object.fromEntries(allProducts.map((product) => [product.id, product])) as Record<
   string,
   Product
 >
+
+/** Homepage featured grid — curated selection of popular products. */
+export const featuredProducts: Product[] = [
+  'watermelon',
+  'clementine',
+  'cabbage',
+  'orange',
+  'grape',
+  'peaches',
+  'pepper',
+  'tomato',
+].map((id) => byId[id])
 
 /** Order matches the static vegetables page, sorted alphabetically. */
 export const vegetableProducts: Product[] = [
